@@ -1,0 +1,21 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if (prods.length > 0) { %>
+            <% for (let product of prods){ %>
+                <li>
+                    <h3><%=product.title%></h3>
+                    <%=product.imageUrl%>
+                    <h4>$<%=product.price%></h4>
+                    <p><%=product.description%></p>
+                    <a class="btn" href="/products/<%= product.id %>">Details</a>
+                    <%- include('../includes/add-to-cart.ejs',{product:product}) %>
+                </li>
+            <% }%>
+        <% } else {%>
+            <h2>No Products.</h2>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
